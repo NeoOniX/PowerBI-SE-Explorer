@@ -1,0 +1,16 @@
+:root {
+    --background-color: #181818;
+    --text-color: white;
+
+    --button: #050505;
+    --button-hover: #111111;
+
+    --scroll: white;
+    --scroll-hover: #adadad;
+
+    --table-head: #1f1f1f;
+    --table-body: #1c1c1c;
+
+    --shadow: #363636;
+    --light: #363636;
+}
