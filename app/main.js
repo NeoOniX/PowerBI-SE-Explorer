@@ -33,7 +33,9 @@ const main = async () => {
     );
 
     // IPC Setup
-    ipcMain.on("start-get-data", () => mainWindow.webContents.send("res-data", DataReader.read()));
+    ipcMain.on("start-get-data", () =>
+        mainWindow.webContents.send("res-data", DataReader.read(Config.getAppOptions().dataPath))
+    );
     ipcMain.on("open-in-browser", (event, arg) => shell.openExternal(arg));
 
     // IPC Setup - AppOptions
@@ -47,7 +49,7 @@ const main = async () => {
     ipcMain.on("start-set-export-path", async () => {
         await Config.setExportPath();
         mainWindow.webContents.send("res-app-options", Config.getAppOptions());
-        mainWindow.webContents.send("res-data", DataReader.read());
+        mainWindow.webContents.send("res-data", DataReader.read(Config.getAppOptions().dataPath));
     });
 };
 
