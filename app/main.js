@@ -6,11 +6,15 @@ const path = require("path");
 // Remove security warnings
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true;
 
+const instanceLock = app.requestSingleInstanceLock();
+
+let mainWindow = null;
+
 const main = async () => {
     Config.checkFolders();
 
     // Main page
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         height: 810,
         width: 1440,
         backgroundColor: "#000000",
@@ -53,4 +57,14 @@ const main = async () => {
     });
 };
 
-app.once("ready", main);
+if (!instanceLock) {
+    app.quit();
+} else {
+    app.on("second-instance", _ => {
+        if (mainWindow && mainWindow instanceof BrowserWindow) {
+            if (mainWindow.isMinimized()) mainWindow.restore();
+            mainWindow.focus();
+        }
+    });
+    app.once("ready", main);
+}

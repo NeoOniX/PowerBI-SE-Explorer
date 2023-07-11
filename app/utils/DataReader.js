@@ -71,6 +71,12 @@ class DataReader {
                 }`;
                 try {
                     JSON.parse(fs.readFileSync(f.fpath)).forEach(data => {
+                        if (
+                            exportsDataDict[data.URL] !== undefined ||
+                            anomaliesDataDict[data.URL] !== undefined
+                        )
+                            return;
+
                         if (data["Reason"] === undefined) {
                             exportsDataDict[data.URL] = {
                                 ...data,

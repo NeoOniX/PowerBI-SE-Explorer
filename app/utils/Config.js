@@ -97,14 +97,6 @@ class Config {
                 fs.mkdirSync(join(path, folder), { recursive: true });
             }
         }
-
-        // Export folder
-        const subfolders = ["/Anomalies/", "/Exports/"];
-        for (const folder of subfolders) {
-            if (!fs.existsSync(join(this.getAppOptions().dataPath, folder))) {
-                fs.mkdirSync(join(this.getAppOptions().dataPath, folder), { recursive: true });
-            }
-        }
     }
 }
 

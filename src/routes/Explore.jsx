@@ -108,7 +108,7 @@ const Explore = props => {
                         type="text"
                         name="search"
                         id="search"
-                        onChange={e => setSearch(e.target.value)}
+                        onChange={e => setSearch(e.target.value.toLowerCase())}
                     />
                 </div>
                 <div>
