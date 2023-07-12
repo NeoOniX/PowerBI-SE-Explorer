@@ -3,11 +3,12 @@
     "author": "Gauthier 'NeoOniX' Delzenne",
     "description": "Search engine for PowerBI.",
     "productName": "PowerBI SE Explorer",
-    "version": "0.1.0",
+    "version": "0.0.1",
     "private": true,
     "dependencies": {
         "dotenv": "^16.0.3",
         "electron-is-dev": "^2.0.0",
+        "electron-updater": "^6.1.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-icons": "^4.3.1",
@@ -37,9 +38,14 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run start\" \"npm run electron:start\"",
-        "electron:build": "npm run build && electron-builder -c.extraMetadata.main=app/main.js",
+        "electron:build": "npm run build && electron-builder -c.extraMetadata.main=app/main.js --publish never",
+        "electron:publish": "npm run build && electron-builder -c.extraMetadata.main=app/main.js --publish always",
         "electron:start": "wait-on tcp:3000 && electron .",
         "electron:main": "electron ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NeoOniX/PowerBI-SE-Explorer.git"
     },
     "build": {
         "extends": null,
@@ -53,6 +59,15 @@
         ],
         "directories": {
             "buildResources": "assets"
+        },
+        "nsis": {
+            "oneClick": false,
+            "perMachine": false,
+            "allowToChangeInstallationDirectory": true
+        },
+        "publish": {
+            "provider": "github",
+            "vPrefixedTagName": true
         }
     },
     "eslintConfig": {

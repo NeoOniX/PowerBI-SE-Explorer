@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain, shell } = require("electron");
+const { autoUpdater } = require("electron-updater");
 const isDev = require("electron-is-dev");
 const { Config, DataReader } = require("./utils");
 const path = require("path");
@@ -9,6 +10,18 @@ process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true;
 const instanceLock = app.requestSingleInstanceLock();
 
 let mainWindow = null;
+
+autoUpdater.on("update-available", () => {
+    if (mainWindow && mainWindow instanceof BrowserWindow) {
+        mainWindow.webContents.send("update-available");
+    }
+});
+
+autoUpdater.on("update-downloaded", () => {
+    if (mainWindow && mainWindow instanceof BrowserWindow) {
+        mainWindow.webContents.send("update-downloaded");
+    }
+});
 
 const main = async () => {
     Config.checkFolders();
@@ -55,6 +68,17 @@ const main = async () => {
         mainWindow.webContents.send("res-app-options", Config.getAppOptions());
         mainWindow.webContents.send("res-data", DataReader.read(Config.getAppOptions().dataPath));
     });
+
+    // IPC Setup - Update
+    ipcMain.on("start-update-download", () => {
+        autoUpdater.downloadUpdate();
+    });
+    ipcMain.on("start-update-restart", () => {
+        autoUpdater.quitAndInstall();
+    });
+
+    // Check Update
+    autoUpdater.checkForUpdatesAndNotify();
 };
 
 if (!instanceLock) {

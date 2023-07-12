@@ -5,6 +5,7 @@ import IconOption from "../components/IconOption/IconOption";
 import PreviewModal from "../components/PreviewModal/PreviewModal";
 import { FcOpenedFolder, FcSynchronize, FcCancel } from "react-icons/fc";
 import { BiMoon, BiSun } from "react-icons/bi";
+import UpdateModal from "../components/UpdateModal/UpdateModal";
 
 const Explore = props => {
     // Data
@@ -78,9 +79,22 @@ const Explore = props => {
     // Preview
     const [preview, setPreview] = useState(null);
 
+    // Update
+    const [update, setUpdate] = useState("hidden");
+    useEffect(() => {
+        window.electron.setUpdateAvailableListener(() => {
+            setUpdate("visible");
+        });
+
+        window.electron.setUpdateDownloadedListener(() => {
+            setUpdate("downloaded");
+        });
+    });
+
     return (
         <>
             {preview !== null && <PreviewModal preview={preview} setPreview={setPreview} />}
+            {update !== "hidden" && <UpdateModal update={update} setUpdate={setUpdate} />}
             <div className="topbar">
                 <button onClick={() => window.electron.setExportPath()}>
                     <FcOpenedFolder />
