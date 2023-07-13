@@ -11,6 +11,11 @@ const instanceLock = app.requestSingleInstanceLock();
 
 let mainWindow = null;
 
+// AutoUpdater Setup
+
+autoUpdater.autoDownload = false;
+autoUpdater.autoInstallOnAppQuit = false;
+
 autoUpdater.on("update-available", () => {
     if (mainWindow && mainWindow instanceof BrowserWindow) {
         mainWindow.webContents.send("update-available");

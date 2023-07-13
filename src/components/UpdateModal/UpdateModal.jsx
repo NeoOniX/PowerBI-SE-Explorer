@@ -1,19 +1,19 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import "./UpdateModal.css";
-import { FcDownload } from "react-icons/fc";
+import { FcDownload, FcExternal } from "react-icons/fc";
 
 const UpdateModal = props => {
     return (
-        <div className="background" onClick={() => props.setUpdate("hidden")}>
-            <div className="frame" onClick={event => event.stopPropagation()}>
-                <div className="frame_top">
+        <div className="update-background" onClick={() => props.setUpdate("hidden")}>
+            <div className="update-frame" onClick={event => event.stopPropagation()}>
+                <div className="update-frame_top">
                     <span>Mise à jour</span>
                     <button className="close" onClick={() => props.setUpdate("hidden")}>
                         X
                     </button>
                 </div>
-                <div className="frame_content">
+                <div className="update-frame_content">
                     {props.update === "visible" && (
                         <>
                             <p>
@@ -41,7 +41,9 @@ const UpdateModal = props => {
                                 Téléchargement terminé ! Cliquez ci-dessous pour lancer la mise à
                                 jour.
                             </p>
-                            <button onClick={() => window.electron.restartUpdate()}></button>
+                            <button onClick={() => window.electron.restartUpdate()}>
+                                <FcExternal />
+                            </button>
                         </>
                     )}
                 </div>

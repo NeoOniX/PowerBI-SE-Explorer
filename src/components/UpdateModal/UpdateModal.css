@@ -1,6 +1,6 @@
 /* Global */
 
-.background {
+.update-background {
     position: fixed;
     top: 0;
     left: 0;
@@ -14,7 +14,7 @@
     justify-content: center;
 }
 
-.frame {
+.update-frame {
     border-radius: 5px;
     height: 30vh;
     width: 60vw;
@@ -26,14 +26,14 @@
     color: var(--text-color);
 }
 
-.title {
+.update-title {
     font-size: 18px;
     text-decoration: underline;
 }
 
 /* Top */
 
-.frame_top {
+.update-frame_top {
     height: 32px;
     position: sticky;
     top: 0;
@@ -45,12 +45,12 @@
     border-bottom: 1px solid var(--text-color);
 }
 
-.frame_top > span,
-.frame_top > button {
+.update-frame_top > span,
+.update-frame_top > button {
     overflow: hidden;
 }
 
-.frame_top > span {
+.update-frame_top > span {
     margin: 0 5px;
     font-size: 18px;
     font-weight: bold;
@@ -58,7 +58,7 @@
     flex: 1;
 }
 
-.frame_top > button {
+.update-frame_top > button {
     padding: 5px 50px;
     margin-right: 25px;
     box-shadow: none;
@@ -69,11 +69,11 @@
     border-left: 1px solid var(--text-color);
 }
 
-.frame_top > button:hover {
+.update-frame_top > button:hover {
     background-color: var(--button-hover);
 }
 
-.frame_top > button.close {
+.update-frame_top > button.close {
     width: 50px;
     margin: 0;
     padding: 5px 10px;
@@ -83,13 +83,13 @@
     border: none;
 }
 
-.frame_top > button.close:hover {
+.update-frame_top > button.close:hover {
     background-color: red;
 }
 
 /* Content */
 
-.frame_content {
+.update-frame_content {
     background-color: var(--background-color);
     z-index: 1;
     padding: 10px;
@@ -103,17 +103,17 @@
     flex-direction: column;
 }
 
-.frame_content > * {
+.update-frame_content > * {
     margin-top: 20px;
 }
 
-.frame_content > button {
+.update-frame_content > button {
     padding: 5px;
     width: 40px;
     height: 40px;
 }
 
-.frame_content > button > svg {
+.update-frame_content > button > svg {
     height: 100%;
     width: 100%;
 }
