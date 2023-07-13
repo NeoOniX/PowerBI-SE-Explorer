@@ -3,7 +3,7 @@
     "author": "Gauthier 'NeoOniX' Delzenne",
     "description": "Search engine for PowerBI.",
     "productName": "PowerBI SE Explorer",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "private": true,
     "dependencies": {
         "dotenv": "^16.0.3",

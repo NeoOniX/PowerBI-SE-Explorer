@@ -79,7 +79,7 @@ const main = async () => {
         autoUpdater.downloadUpdate();
     });
     ipcMain.on("start-update-restart", () => {
-        autoUpdater.quitAndInstall();
+        autoUpdater.quitAndInstall(true, true);
     });
 
     // Check Update

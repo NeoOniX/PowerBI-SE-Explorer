@@ -93,8 +93,8 @@ const Explore = props => {
 
     return (
         <>
-            {preview !== null && <PreviewModal preview={preview} setPreview={setPreview} />}
             {update !== "hidden" && <UpdateModal update={update} setUpdate={setUpdate} />}
+            {preview !== null && <PreviewModal preview={preview} setPreview={setPreview} />}
             <div className="topbar">
                 <button onClick={() => window.electron.setExportPath()}>
                     <FcOpenedFolder />
