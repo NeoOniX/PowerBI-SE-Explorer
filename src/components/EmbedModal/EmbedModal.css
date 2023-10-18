@@ -1,0 +1,87 @@
+/* Global */
+
+.embed .frame {
+    border-radius: 5px;
+    height: 70vh;
+    width: 70vw;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--text-color);
+}
+
+button,
+label {
+    margin: 5px;
+}
+
+.frame_mr_15 {
+    margin-right: 15px;
+}
+
+/* Content */
+
+.frame_content {
+    overflow-x: hidden;
+    background-color: var(--background-color);
+    z-index: 1;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    text-align: start;
+}
+
+.frame_content > div {
+    margin-top: 10px;
+}
+
+.frame_content > div:first-child {
+    margin-top: 0;
+}
+
+.frame_content .frame_flex {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 0 0;
+}
+
+.filters > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.filters > div > * {
+    background-color: var(--table-body);
+    flex: 1;
+    margin: 1px;
+    padding: 10px;
+    height: 35px;
+    text-align: center;
+}
+
+.filters > div.filter_title > * {
+    background-color: var(--table-head);
+}
+
+.filters > div > input {
+    border: none;
+    color: white;
+}
+
+.filters > div > .filter_delete {
+    flex: 0;
+    margin: 1px;
+    padding: 1px 10px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filters > div.filter_title > .filter_delete {
+    color: rgb(80, 80, 80);
+}

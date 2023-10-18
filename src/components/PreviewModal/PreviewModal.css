@@ -14,7 +14,7 @@
     justify-content: center;
 }
 
-.frame {
+.preview .frame {
     border-radius: 5px;
     height: 80vh;
     width: 80vw;
